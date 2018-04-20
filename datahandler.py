@@ -228,6 +228,8 @@ class DataHandler(object):
         """
         if opts['dataset'] == 'mnist':
             self._load_mnist(opts)
+        if opts['dataset'] == 'eeg':
+            self._load_eeg(opts)
         elif opts['dataset'] == 'dsprites':
             self._load_dsprites(opts)
         elif opts['dataset'] == 'mnist_mod':
@@ -391,6 +393,11 @@ class DataHandler(object):
         self.test_data = Data(opts, X[-test_size:])
         self.num_points = len(self.data)
 
+        logging.debug('Loading Done.')
+
+    def _load_eeg(self, opts):
+
+        self.data = None  # TBC
         logging.debug('Loading Done.')
 
     def _load_mnist(self, opts, zalando=False, modified=False):
